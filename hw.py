@@ -10,7 +10,7 @@ from os.path import join
 def download_model():
     '''urllib.request.urlretrieve(
         "http://rusvectores.org/static/models/rusvectores2/ruscorpora_mystem_cbow_300_2_2015.bin.gz",
-        "ruscorpora_mystem_cbow_300_2_2015.bin.gz")'''
+        "ruscorpora_mystem_cbow_300_2_2015.bin.gz")''' #это надо делать один раз. оно качает модель в папку с прогой. очень долго
     m = 'ruscorpora_mystem_cbow_300_2_2015.bin.gz'
     model = gensim.models.KeyedVectors.load_word2vec_format(m, binary=True)
     return model
@@ -37,13 +37,13 @@ def grph(word, res):
             g.add_edge(w[0], n[0], weight=n[1])
     return g
 
-def vis(g, word):
+def vis(g, word): # визуализация графа
     pos = nx.spring_layout(g)
     nx.draw_networkx_nodes(g, pos, node_color='red', node_size=50)
     nx.draw_networkx_edges(g, pos, edge_color='yellow')
     nx.draw_networkx_labels(g, pos, font_size=5, font_family='Arial')
     plt.axis('off')
-    #plt.show()
+    #plt.show() # это надо. то, что дальше не надо
     file_name = word + '.png'
     pth = join('static', file_name)
     plt.savefig(pth, dpi=400)
@@ -58,7 +58,7 @@ def centr(g):
     bc = [nodeid for nodeid in sorted(deg, key=deg.get, reverse=True)]
     deg = nx.eigenvector_centrality(g)
     ec = [nodeid for nodeid in sorted(deg, key=deg.get, reverse=True)]
-    return dc, cc, bc, ec
+    return dc, cc, bc, ec # это словари, в которых узлы в порядке центральности
 
 def more_inf(g):
     r = nx.radius(g)
@@ -77,7 +77,7 @@ def comm(g):
 
 
 
-app = Flask(__name__)
+app = Flask(__name__) # это и ниже не надо
 
 @app.route('/')
 def index():
@@ -98,7 +98,7 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=False) # это не надо, а дальше что-то надо
     #g = grph('дом_S', words_neighbors('дом_S'))
     #vis(g)
     #centr(g)
