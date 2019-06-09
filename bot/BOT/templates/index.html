@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Just do it</title>
+    <style>
+        p {
+            text-align: center;
+        }
+        input[type="text"] {
+            font-size: 20px;
+			width: 200px;
+			height: 30px;
+		}
+        input[type="text"]::placeholder { font-size: 20px; }
+        .but {
+			color: #000000;
+            font-size: 20px;
+			background: #786a7e;
+			padding: 4px;
+			width: 80px;
+			height: 30px;
+			border-radius: 5px;
+		}
+    </style>
+</head>
+<body>
+<div>
+    <form>
+        <p><input required type="text" name="word" title='Введите любое слово на Ваш выбор' placeholder="слово"></p>
+        <p><input class = "but" type="submit" value="Стих"></p>
+    </form>
+</div>
+</body>
+</html>
